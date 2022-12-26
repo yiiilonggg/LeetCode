@@ -1,0 +1,5 @@
+two pointers, a pointer to the maximum step you can go to (high) and a pointer to where you currently are (curr)
+continue traversing the array as long as you have steps to take (curr <= high)
+at each index, check if there is a new high (high = max(high, curr + nums[curr])
+if you can already reach the end of the array, return true
+if you end the while loop without returning true, means the high is not at the end of the array and return false
