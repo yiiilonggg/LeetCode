@@ -1,0 +1,6 @@
+create a new array to have the differences between capacity and current number of rocks (diff)
+find the total number of extra rocks you can fit (total)
+if total <= additionalRocks, means you can fill all bags, return the number of bags (n)
+else, sort the array in ascending order
+as we traverse the array, fill each bag (additionalRocks -= diff[i])
+if the number of rocks we need to make the bag full is more than the additionalRocks left, we return the index we are at
