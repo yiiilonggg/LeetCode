@@ -1,0 +1,3 @@
+create a function that fulfils the floor operation of the question
+create an array to count the number of occurrences of piles
+traverse the array from the back and perform operations to maximise the halving
