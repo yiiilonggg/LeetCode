@@ -1,0 +1,33 @@
+base cases:
+  n == 1: only one way,  |
+  n == 2: only two ways, || or =
+  
+by observation:
+  n == 3: 5   (2 * 2 + 1 -> 2 * res[2] + res[0]) if res[0] == 1
+  n == 4: 11  (2 * 5 + 1 -> 2 * res[3] + res[1])
+  n == 5: 24  (2 * 11 + 2 -> 2 * res[4] + res[2])
+  n == 6: 53  (2 * 24 + 5 -> 2 * res[5] + res[3])
+  general pattern: res[i] = 2 * res[i - 1] + res[i - 3]
+  
+consideration:
+  consider some n and assume that we have all previous results before n
+  if we go from n - 1 to n, we can have all permutations of n - 1
+    imagine all of n - 1 arrangements, then we add |
+    this is all the permutations we can get from n - 1, we cannot add more to the arrangement, since there is no other unique way to add |
+    note: even if we add from front or back, it is still only 1 unique set of permutations as there will always be the mirror images of permutations in n - 1
+  if we go from n - 2 to n, we can have twice of all permutations of n - 2
+    imagine all of n - 2 arrangements, then we add =
+    note: adding || is not unique as they are permutations captured in n - 1 + |
+  for all permutations from n - 3 to 0, we alternate adding new (unique) permutations from the various shapes
+    n - 3: two pairs of trimonos (L + upside down L)
+    n - 4: two pairs of trimonos (L + reverse L + -)
+    n - 5: two pairs of trimonos (same as n - 3 but now we have - dominos in between)
+    n - 6: two pairs of trimonos (same as n - 4 but we not have - dominos in between)
+    and so on
+  so we get
+  res[i]  = res[i - 1] + res[i - 2] + 2 * (res[i - 3] + ... + res[0])
+          = res[i - 1] + res[i - 2] + res[i - 3] + res[i - 3] + 2 * (res[i - 4] + ... + res[0])
+          = res[i - 1] + res[i - 3] + (res[i - 2] + res[i - 3] + 2 * (res[i - 4] + ... + res[0]))
+          = res[i - 1] + res[i - 3] + res[i - 1]
+          = 2 * res[i - 1] + res[i - 3]
+          ** as res[i - 1] = res[i - 2] + res[i - 3] + 2 * (res[i - 4] + ... + res[0])
