@@ -1,0 +1,11 @@
+can either go from front to back or back to front
+either solution uses a stack of a pair (temperature, index)
+
+as we traverse the array, we will look at the top of the stack
+  ** going from front to back
+    if the pair at the top of the stack has a temperature lower than the current, set the result as (current index - old index)
+    push the current temperature and index pair
+    
+  ** going from back to front
+    if the pair at the top of the stack has a temperature less than or equals to current temperature, pop it off
+    if the stack is not empty, set result of current temperature as (top of stack pair index - current index)
