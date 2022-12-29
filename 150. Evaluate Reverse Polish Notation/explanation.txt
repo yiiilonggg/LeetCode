@@ -4,3 +4,10 @@ traverse the token array
     evaluate the expression,
     push the result of the expression onto the stack
   else push the number onto the stack
+
+note for python
+(method) eval(string expression)
+- returns the result of the string expression
+- note for floor division '//'
+  - negative decimals go to the lower negative number
+  - not the same as truncating decimal points
