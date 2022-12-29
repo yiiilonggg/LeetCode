@@ -1,0 +1,50 @@
+since index is important for comparing ties, create a new array with task elements and index (tasksIndexed)
+as the tasks may not be ordered, sort in ascending order of enqueue timing
+create pointers for the result and task arrays
+the first current time will be the first task (currTime)
+utilise priority queue data structure, sorted by the process time, then the index
+as we work through the tasks, the cpu might be idle, so conditions should be
+  there are tasks queued to do, or
+  not all tasks are queued yet
+when we are processing the tasks
+  if there are tasks queued,
+    perform the next task in queue, 
+    add the process time to current time, and
+    modify the result
+  if there are no tasks in queue,
+    the current time is the the enque time of the next task
+  to add tasks into the queue, we enqueue any tasks that has an enque time that is less than or equal to current time
+ 
+ 
+notes for python
+
+library: heapq
+- (class) method: heappush(queue, element)
+  - pushes element onto the queue
+  - heap structure is by default a min-heap
+    - for max-heap, include a negative sign
+  - if element is a list/tuple but there is some special ordering:
+    - instead of just pushing the element, push a pair in the form (priorityComponent, element)
+    - e.g. process time (index 1), then index (index 2) are the priority components, can push (task[1], task[2], task) instead of just task
+- (class) method: heappop(queue)
+  - returns the head of the queue
+- (class) method: heapify(list)
+  - if there is a (unordered) list and wish to transform the list into a priority queue
+  - returns a sorted priority queue (remember it will be like a min-heap, modify accordingly if max-heap required)
+
+library: queue
+- data structure: Queue
+  - FIFO
+- data structure: LIFOQueue
+- data structure: PriorityQueue
+- data structure: SimpleQueue
+- all data structures take in a constructor parameter maxsize that if passed, sets a limit to the size of the queue, else queue is filled until memory maxed
+  - if maxsized used, exception Full will be raised when trying to add elements into a full queue
+- (instance) method: qsize()
+  - returns the length of the queue
+- (insstance) method: empty()
+  - returns true if queue is empty, false otherwise
+- (instance) method: get()
+  - removes and returns the head of the queue
+- (instance) method: put(element)
+  - inserts an element into the queue
