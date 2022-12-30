@@ -1,0 +1,32 @@
+rerooting dp algorithm
+
+intuition:
+  consider some kind of tree, with a root node A and a subtree B
+  assume we have the sum of all path lengths within the subtree B, stored in dp[B]
+  assume we know the size of subtree B, i.e. the number of nodes in subtree B, stored in size[B]
+  to find dp[A], we essentially add one to all paths in subtree B
+  the number of paths == the number of nodes in the subtree B
+  therefore, dp[A] = dp[B] + size[B]
+  
+consider that now node A is the root node of the full tree
+  that means that dp[A] is the sum of all paths to all other nodes in the tree
+  goal: reroot the tree in such a way that when we arrive at some node X, the size and dp are computed in such a way that node X is the root of the whole tree
+  
+rerooting
+  take in a fromNode and toNode where
+    current situation: fromNode is the parent and toNode is the child
+    goal: fromNode is the child and toNode is the parent
+  the size of fromNode decreases by the size of toNode since toNode is no longer the child (size[fromNode] -= size[toNode])
+  the sum of all path lengths in fromNode decreases by all the path lengths in toNode and the size of toNode (dp[fromNode] -= dp[toNode] + size[toNode]
+  the size of toNode increases by the size of fromNode since fromNode is now the child (size[toNode] += size[fromNode])
+  the sum of all path lengths in toNode increases by all path lengths in fromNode and size of fromNode (dp[toNode] += dp[fromNode] + size[fromNode])
+  ** note: have to edit fromNode first, since fromNode contains information of toNode
+  
+first we traverse the graph normally, treating root 0 as the root of the full tree and filling the size and dp arrays
+
+next, we traverse the graph again, this time, when we arrive at a node, the node will be the root of the full subtree
+  first, set the answer to the dp value of the node (res[curr] = dp[curr])
+  now we go to each neighbour, similar to a backtracking algorithm
+    modify the tree such that the neighbour is the parent and the current node is the child with reroot function
+    go to the neighbour node
+    on the callback, revert the tree to its original form with reroot function
