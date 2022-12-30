@@ -1,0 +1,8 @@
+classic backtracking algorithm
+stopping condition
+  if node is in the path (exit out of cyclical paths), or
+  target node reached
+add node to path
+if target node reached, add path to result
+if other node, look at each of the neighbours and recursively perform backtracking
+remove the node from the path
