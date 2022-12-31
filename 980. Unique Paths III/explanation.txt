@@ -1,0 +1,13 @@
+classical backtracking algorithm
+
+instantiate required variables (boolean array to track visited cells, starting coordinates, total wall count)
+as we perform backtracking, we keep track of the number of cells we have seen, which starts at the number of walls we counted
+stopping conditions for backtracking
+  first, check if coordinates are out of bounds,
+  next, check if the cell has been visited or is a wall,
+  lastly, check if it is the destination cell
+    return 1 if the sum of walls and traversed cells equals the total number of cells, else 0
+increase the count of seen cells
+mark this cell as visited on this path
+perform backtracking in all four orthogonal directions
+before returning the total number of paths, mark this cell as unvisited so future paths may enter the cell again
