@@ -1,0 +1,2 @@
+create a new array that contains the maximum side length of the square from each rectangle
+count the number of the largest side length
