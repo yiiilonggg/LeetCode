@@ -1,0 +1,48 @@
+bruteforce algorithm
+
+loop from low to high inclusive, sum the digits and increment the count of digits sum
+
+pattern
+
+for 1 - 10
+digits sum:  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |
+counts    :  2  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0  |
+
+for 11 - 20
+digits sum:  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |
+counts    :  1  |  2  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |
+
+for 21 - 30
+digits sum:  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |
+counts    :  1  |  1  |  2  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |
+
+for 191 - 200
+digits sum:  2  | ... |  11 |  12 |  13 |  14 |  15 |  16 |  17 |  18 |  19 |  20 |
+counts    :  1  |     |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0  |
+
+therefore, we can visualise it like this
+
+  number  |  sum of digits  |    pattern     |
+ ---------------------------------------------
+    9     |       9         |       -        |
+    10    |       1         |   9 - 9 + 1    |
+ ---------------------------------------------
+    19    |       10        |       -        |
+    20    |       2         |   10 - 9 + 1   |
+ ---------------------------------------------
+   199    |       19        |       -        |
+   200    |       2         | 19 - 9 * 2 + 1 |
+ ---------------------------------------------
+   999    |       27        |       -        |
+  1000    |       1         | 27 - 9 * 3 + 1 |
+ ---------------------------------------------
+  1999    |       28        |       -        |
+  2000    |       2         | 28 - 9 * 3 + 1 |
+
+putting this together
+initialise the pointer's digit sum (i.e. the sum of digits of lowLimit)
+now as we move from lowLimit to highLimit
+  we count the number of zeros our number has, if any
+    -9 from pointer for each 0
+  increment the pointer for any number
+  increment the count
