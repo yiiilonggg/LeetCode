@@ -11,3 +11,19 @@ increase the count of seen cells
 mark this cell as visited on this path
 perform backtracking in all four orthogonal directions
 before returning the total number of paths, mark this cell as unvisited so future paths may enter the cell again
+
+bitmask algorithm
+** works because of the condition that there is a maximum of 20 cells
+** saves space compared to backtracking algorithm as there excludes the need for a boolean array
+
+instead of a wallcount, we have a mask that tracks where we have been or where there is a wall
+(mask index) = (current row) * (number of columns) + (current column)
+with this, we can simply check if we are at a pre-visited cell or out-of-bounds by performing bitwiseAND and checking if the result is 0
+as we traverse
+  check if out of bounds cell
+  check if bitwiseAND yields a non-zero value
+  if at a destination cell, check if the mask equals to (1 << (rows * columns)) - 1
+    rows * columns represents the total number of cells
+    1 << (rows * columns) results in a binary value of 1000...000
+    by -1 that value, we will get 0111...111, which is the same value as our mask if we have traversed to all cells
+if both conditions are passed, perform bitwiseXOR on the mask and the current coordinates to "save" the position
