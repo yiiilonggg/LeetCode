@@ -1,0 +1,5 @@
+traverse the array and add the distinct prime factors into the set
+
+proof for upper limit of prime factors
+let a and b be divisors of n such that a * b = n
+if both a and b are larger than sqrt(n), a * b > n
