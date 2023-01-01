@@ -1,0 +1,11 @@
+prime number algorithm: sieve of eratosthenes
+
+main idea:
+instead of computing if each number if is a prime, we instantiate a boolean array of numbers from 1 to right
+when we traverse from 2 to right,
+  we check if the boolean value at the current number is marked as a multiple of a previously encountered prime
+  if it is not marked as a multiple,
+    it is a prime
+    for every multiple of this prime after the prime, to the right most value, we mark all those values as multiples
+    check if this number is within the range of left < i < right
+    if it is, compute the difference and check with the smallest difference encountered and adjust result accordingly
