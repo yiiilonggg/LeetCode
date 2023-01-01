@@ -1,0 +1,18 @@
+classical greedy algorithm
+
+special case: if k < 10, means it is a single digit
+  check if there is any digit that is larger than k
+  if there is a larger single digit, return -1 since unable to partition
+  else the number of partitions will be the length of the string
+  
+instantiate a track to keep track of a string for comparison
+as we traverse the string
+  check that if we add the next digit into our track
+    if it is smaller than k, we add it to our tracker and continue
+    else
+      if the tracker is empty, means we cannot partition, so return -1
+      otherwise, increment the count and set the tracker as the current digit
+when we finish traversing, the tracker will definitely contain a number smaller than k
+  either a number that prevTracker + new digit < k (fulfils first condition), or
+  a single digit, and k has more than one digit
+so return count + 1
