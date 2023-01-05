@@ -1,0 +1,7 @@
+greedy approach
+
+sort the array by the upper limit of each entry
+as we traverse the array, keep track of the "latest" arrow position we can shoot
+if starting position of entry is further than latest arrow position,
+    increment count
+    set new furthest position
