@@ -1,0 +1,13 @@
+naive solution
+
+create a separate array to store the sorted order and compare
+however, it takes O(n) space and sorting take O(nlogn) time
+
+using pointers
+
+traverse the array to find the start of the original array
+    this can be done by checking if the current element is smaller than the previous
+    if we have reached the end of the array, means the input array is already non-decreasing so return true
+once we have the head of the original array, check if it is non-decreasing to the end of the array
+    if there is a decreasing portion, return false
+once at the end, check if the tail of the input array is not larger than the head of the input array
