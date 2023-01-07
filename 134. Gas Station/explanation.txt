@@ -1,0 +1,4 @@
+if total of cost > total of gas, no way that we can complete a circuit
+if it is possible, there is a unique solution
+traverse the gas and cost arrays, each time keeping track of the current sum of differences between gas and cost
+if the current sum goes below zero, we set it to 0 and the start of the circuit to the next index
