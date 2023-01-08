@@ -1,0 +1,31 @@
+priority queue simulation
+
+have four priority queues to represent each stage
+we go from leftBank -> rightWarehouse -> rightBank -> leftWarehouse -> leftBank
+prioritise workers ready at rightBank over those ready at leftBank
+if we have already sent a total of n workers, we should stop sending workers
+stopping (return) condition: when n == 0, empty rightBank and empty rightWarehouse
+
+bank priority queues are compared by efficiency (non increasing order), then index (decreasing order)
+warehouse priority queues are compared by completion time (increasing order)
+for my algorithm, i tried to write it in such a way that whenever we start the while block, the bridge is definitely open for someone to cross
+as we send workers
+check if there is anyone on the rightBank (since we prioritise the rightBank)
+    we send the next worker over the bridge
+    update our current time
+    check if return condition is met
+    update worker completion time
+    rightBank -> leftWarehouse
+if we want to send more workers (n > 0) and there are workers ready at leftBank
+    send the next worker over the bridge
+    decrement the number of workers to send
+    update current time
+    update worker completion time
+    leftBank -> rightWarehouse
+if both conditions fail (either rightBank empty, n == 0 or leftBank empty)
+    since we prioritise workers coming from rightBank, if the rightWarehouse is not empty, we take the next worker who finishes at the rightWarehouse
+    if the rightWarehouse is empty, then we take the next worker who finishes at the leftWarehouse
+    update the current time to this next worker's completion time
+before we make the next worker cross the bridge, check if worker's have finished their task at the warehouses considering the current time
+    leftWarehouse -> leftBank
+    rightWarehouse -> rightBank
