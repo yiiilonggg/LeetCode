@@ -1,0 +1,8 @@
+brute force algorithm (since input size is relatively small)
+
+for each point,
+    keep a counter to count all the gradients
+    now traverse to every other point
+        compute the gradient
+        remember to consider cases where points share the same x-coordinate (vertical line)
+    update the highest count
