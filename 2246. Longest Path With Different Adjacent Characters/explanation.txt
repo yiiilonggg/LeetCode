@@ -1,0 +1,9 @@
+instead of going from parent to children, start from all children to ensure we do not miss any nodes
+inDegrees array to find all leaf nodes
+start queue from leaf nodes
+every time we travel to a node, decrement the in degree of its parent
+if the parent finally has a 0 in degree, it is like a leaf node now, append to queue
+    note: ignore node 0 since it has no parent (i.e. parent[0] = -1)
+longest path from the current child is the sum of its longest path and its parent's longest path
+longest path for the parent is either its current longest path or the child's longest path + 1
+    note: update result first if not you might double count the child's path twice
