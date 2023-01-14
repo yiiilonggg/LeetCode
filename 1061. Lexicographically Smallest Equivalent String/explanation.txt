@@ -1,0 +1,8 @@
+union find solution
+
+find algorithm
+    idea is to chase the parent of the set
+
+union algorithm
+    join two sets together by linking them at the parent
+    special condition for this question is that the smallest parent becomes the main root
