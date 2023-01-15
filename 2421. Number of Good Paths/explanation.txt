@@ -1,0 +1,13 @@
+union find algorithm
+
+build the graph, starting from edges that have the lowest max value
+    i.e. both nodes involved in the edge should have low values
+as we build the graph, we compute how many times we can join the parent elements of the nodes in the edge
+    when we find the parent of one node in the edge (x = find(edge[0])), the parent of edge[0] will definitely link to the parent of edge[1] since they are joined by the current edge
+    if both parents are of the same value
+        x is the parent from edge[0] and count[x] is the number of same-valued nodes that can reach x, same for y
+        therefore, before we join x and y, there will be count[x] * count[y] good paths
+            e.g. 2 nodes go to x and 3 nodes go to y
+            each of the 2 nodes from x can now link to each of the 3 nodes from y because of the edge we have just added
+    if one parent is larger than the other 
+        set the parent of the smaller one to the larger parent
