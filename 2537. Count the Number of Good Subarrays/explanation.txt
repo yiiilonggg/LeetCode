@@ -1,0 +1,4 @@
+go from right to left of the array
+at each iteration, try to get k pairs first
+if >= k pairs, then every subarray including each element to the right of "right" is valid
+at the end of each iteration, remove the element at the current left pointer

@@ -1,0 +1,14 @@
+rerooting dp problem
+
+first dfs
+    fill the subtree array
+    this array contains the max possible paths, assuming that node 0 is the root
+
+second dfs
+    when we traverse to each node, we try to find the two nodes with the two best paths
+    keep track of the path that the node is coming from as well (fromParent)
+        this is so we do not need to redo the dfs and start at all leaf nodes
+    once we have found the two longest nodes we move on to the neighbouring nodes
+        if the neighbouring node is the best node, the best fromParent path is max(secondPath, fromParent)
+            it will catch its own path when it is at its own node, so we are more interested with what is the next best pair for the best path
+        else, the best fromParent is max(firstPath, fromParent)

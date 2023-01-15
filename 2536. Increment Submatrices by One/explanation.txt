@@ -1,0 +1,4 @@
+instead of brute force adding
+    mark the top left and bottom right corners of the query
+    mark the end of the row and column of the queries
+loop and do a dp-like adding
