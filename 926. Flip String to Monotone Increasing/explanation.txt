@@ -1,0 +1,12 @@
+dp solution
+
+keep 2 arrays
+one keeps track of all 1s fliped to 0 (oneToZeros)
+other keeps track of all 0s flipped to 1 (zeroToOnes)
+at each index, the number of operations to make it a monotonic increasing string is oneToZeros[i + 1] + zeroToOnes[i] - 1
+since at that index we either flip or not flip the bit
+
+logic solution
+keep track of the number of zeros and the number of ones you would flip to zeros
+at each iteration, after updating zeros and oneToZeros, the number of zeros is the min of both variables
+    if zeros > ones, then we should flip all ones we can consider all the bits as zeros, so its like we have restarted
