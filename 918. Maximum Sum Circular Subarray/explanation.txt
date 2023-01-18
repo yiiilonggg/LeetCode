@@ -1,0 +1,9 @@
+modified kadane's algorithm
+
+two cases to care for
+1. normal case where max subarray lies within index 0 to n - 1
+    - use normal kadane's algorithm
+    - keep track of a current max and a max sum subarray value
+2. extra case where max subarray involves the wrap around
+    - the max subarray that wraps around can be represented with the total sum - minimum sum subarray
+    - keep track of a current min and a min sum subarray value
