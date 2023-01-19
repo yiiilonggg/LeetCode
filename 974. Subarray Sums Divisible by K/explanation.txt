@@ -1,0 +1,17 @@
+consider if sum(nums(i, j)) % k == 0
+(sum(nums(0, j)) - sum(nums(0, i))) % k == 0
+sum(nums(0, j)) % k == sum(nums(0, i)) % k
+
+since nums[i] can be negative, we also have to consider negative residue classes
+therefore we assign the residue classes as residue + k
+since we can have negative classes, consider
+sum(nums(0, j)) % k - sum(nums(0, i)) % k == k
+
+traverse the array and add element to prefixSum
+compute the modified residue class
+if residue class is == k (means prefixSum % k == 0), add the current array itself
+if residue class is < k (means prefixSum % k < 0), add the number of arrays with residue class + k
+if residue class is > k (means prefixSum % k > 0), add the number of arrays with residue class - k
+    the last two cases are to catch for negative residues
+    if we have a current negative residue class (sum(nums(0, j))) % k < 0, then we search for the complementary sum(nums(0, i)) % k == k + sum(nums(0, j)) % k
+    likewise if we have a current positive residue class, we search for the complementary negative residue class
