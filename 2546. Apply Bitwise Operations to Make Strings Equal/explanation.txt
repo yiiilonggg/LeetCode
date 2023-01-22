@@ -1,0 +1,9 @@
+possible operations
+
+i = 0, j = 0 -> i = 0, j = 0
+i = 0, j = 1 -> i = 1, j = 1
+i = 1, j = 0 -> i = 1, j = 1
+i = 1, j = 1 -> i = 1, j = 0
+
+means that if we want no 1s, we cannot have 1s in the original string
+if we want 1s, we must have some 1s in the original string
