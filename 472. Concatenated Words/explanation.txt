@@ -1,0 +1,16 @@
+1. trie solution (intuitive)
+    since characters are involved
+    create a trie based on the characters of the words
+    mark nodes which represent the end of a word
+    dfs to traverse the trie, keeping track of how many strings we have seen
+        if at any point we encounter a null neighbour, return false
+
+2. dfs solution (substrings may not be great if string length is longer)
+    same idea as trie, but we store all strings in a set
+    when we go to each string, see if the substring from idx to i is in the set
+        if it is, we recurse with idx = i + 1 and check if on the callback we get true returns
+
+3. prefix-suffix solution (elegant, but same substring idea)
+    consider a string and let the prefix be all characters from 0 - i, and suffix be characters from i onwards
+    if both prefix and suffix are in the set, means the string is formed from two words, immediately return true
+    if only the prefix is in the set, we try and split the suffix recursively
