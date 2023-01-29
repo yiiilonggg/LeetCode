@@ -1,0 +1,23 @@
+Intuition
+    one mapping for key-value pair (trivial)
+    one counter for frequencies (trivial)
+    one mapping for frequencies and keys with corresponding frequencies
+    tracker for current size of cache (compared to polling for size of hashmaps)
+    tracker for lowest frequency we have
+    requirements state average time is constant time, which implies big O can be longer
+
+Approach
+    first two mappings are straightforward
+    for counter, i used an array to avoid too much .get() and .put(key, .get(key) + 1) but it is a preference
+    freqQueues is a mapping for frequencies to queues and we will offer all keys polled via the two functions into the queues automatically
+    we will handle the "incorrectly" placed items in the "wrong" frequencies when we search for the least used or least recent one
+    neat thing about queues is that the least recent item is always at the head so we just keep polling and do not really need to worry about that condition anymore :)
+    we ONLY update lowFreq (our tracker for the lowest frequency we have) when put a new key-value pair into a full map (so essentially like a reset)
+
+handling non-matching frequency items in queues
+    only occurs when we are adding a new key-value pair and we have reached full capacity
+    we go to the queue of lowFreq
+    while we have not found our key to remove and the queue is not empty, we look at the front of the queue
+    if the frequency of this key does not match the lowFreq, means it was used before and this entry in this queue is outdated so we just continue
+    else it means we found our least used key. remove it and reset the counter (in case this key is used again in the future)
+    if we exhausted the queue but still not found the key to remove, we increment the lowFreq and search again
