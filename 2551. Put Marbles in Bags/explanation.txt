@@ -1,0 +1,9 @@
+since the sum of the intervals are only the two ends,
+    reconsider the sum to be the ends of adjacent intervals
+    e.g. [1, 3, 5, 1] -> [1, 3], [5, 1]
+    instead of thinking it as (1 + 3) + (5 + 1), consider 1 + (3 + 5) + 1
+    the ends of both the maxi and mini sums will cancel out
+    so we only need to consider the sum "across" the separators
+create a separators array, which is the sum of weights[i] + weights[i + 1]
+sort the array
+take the best k separators as the maxi sum, and the smallest k separators as the mini sum

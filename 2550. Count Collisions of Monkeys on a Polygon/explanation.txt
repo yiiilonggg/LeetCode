@@ -1,0 +1,11 @@
+fast algo to calculate large powers
+
+consider a base, b, and an exponent, e, where we want to compute b ^ e
+find the bit length of the exponent, and set a tracker (high) to 1 << (bitlength - 1)
+set a res pointer and initialise it to have the value b
+now we will run a for loop, while high > 0 and right-shifting one bit after every iteration
+    at each iteration, res *= res
+    if (high & e) != 0 (means e has a bit on the bit position high is pointing to)
+        res *= b
+
+computing time: O(log n)

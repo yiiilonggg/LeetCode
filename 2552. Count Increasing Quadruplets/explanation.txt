@@ -1,0 +1,19 @@
+dp with condition (non-intuitive)
+
+index condition: i < j < k < l
+value condition: nums[i] < nums[k] < nums[j] < nums[l]
+dp contains all valid triplets
+    i.e. at index k, index condition: i < j < k and value condition: nums[i] < nums[k] < nums[j] satisfied
+    assume this is true first,
+    when we encounter nums[j] > nums[i] means we can add all triplets with i the largest index of the triplets
+        this is because [all valid triplets with i as largest index] + [nums[j]] == valid quadruplets
+        we also increment the number of items nums[j] is bigger
+    if we encounter nums[j] < nums[i],
+        this i element is our potential j element in the triplets tracker
+            and j element is like the k element in the triplets tracker
+        update i to include all the number of smaller elements we have found
+            nums[all smaller elements than nums[j]] < nums[j] < nums[i]
+            so we would have prevSmall permutations of valid triplets
+note that when traversing
+    outer loop is pov of j from 0 to n
+    inner loop is pov of i from 0 to j
