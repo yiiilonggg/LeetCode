@@ -1,0 +1,7 @@
+ordered map
+
+check for difference in frequencies
+if difference is odd, cannot attain equal baskets, return -1 immediately
+consider using lowest cost fruit as a swapper
+if we use the lowest cost fruit to swap, 2 * low < cost of fruit
+    since we have to swap one of the current fruit and its complement
