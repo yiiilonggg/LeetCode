@@ -1,0 +1,12 @@
+1. dfs solution
+
+perform dfs twice, each time only finding 1 unique path
+if we can find 2 unique paths, return false
+else true
+** unique paths means nodes on each path are not overlapping
+
+2. counting diagonals
+
+adjust the grid such that all 1s represent paths from start to end (no deadends)
+count the number of 1s on each diagonal
+if any diagonal has less than 2 1s, means we can flip the node at that 1 to disconnect the graph
