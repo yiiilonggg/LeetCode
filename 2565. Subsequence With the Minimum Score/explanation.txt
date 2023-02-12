@@ -1,0 +1,17 @@
+from the left of the s
+    greedily take the characters of t when they appear in s
+    save the left most element of t at i of s with dp[i] = left
+        this is the highest possible starting element of t that we can start with at i of s
+initialise result as n - left 
+    n = (len(t) - 1 + 1) where len(t) - 1 represents the rightmost element of t
+    left = leftmost element to remove
+    n - left = rightmost element - leftmost element + 1
+from the right of s
+    we check if we can have a nearer leftmost element to the curr element with the dp array
+    note, we can have a situation where the leftmost element is on the right of the current index, so set those situations to 0
+    if we have the same element as the right element of t and right element of s, we shift down one element of t
+        means we can start from a more inner t element
+at the end, we either have the result, but have to consider if we greedily take only from the right
+    ans = min(ans, right + 1)
+        right + 1 represents if i take elements only from the right of t and remove the first element of t
+        right - left + 1 = right + 1 when left = 0
