@@ -1,0 +1,8 @@
+// credit @votrubac on leetcode
+
+sort the array
+    let (i, j) be a pair of indices in the unsorted array and (i',j') be the corresponding indices in the sorted array
+    if i' < j', then we use the original pair i and j
+    if i' > j', then we use the original pair j and i
+    since the restriction is on the indices, and not on the values at the indices
+count the number of pairs that are smaller than higher - 1 and lower, and take the difference
