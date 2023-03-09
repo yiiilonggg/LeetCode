@@ -1,0 +1,12 @@
+assume there is a cycle
+    slow moves 1 node at a time, fast moves 2 nodes at a time
+    let distance to start of cycle be x
+    let distance from start of cycle to where slow == fast be y
+    when slow == fast
+        slow travelled x + y nodes
+        fast travelled 2(x + y) nodes
+        distance from where slow node is to start of cycle is x
+            fast had to travel x + y from slow's current position to the same position
+            means it travelled y distance to the start of the cycle, then x distance to slow's position
+head and slow pointer move one node at a time
+    when they are pointing to the same node, they would have travelled x distance
