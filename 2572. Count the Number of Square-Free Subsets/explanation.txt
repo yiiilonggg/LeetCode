@@ -1,0 +1,12 @@
+masks <- holds an array of prime number masks
+    for primes, we do 1 << i where i is the i-th prime we encounter
+    e.g. 2 is the first prime so 1 is represented as 1 << 1 = 1
+    numbers that have powers of primes in their prime factorisation are marked as -1
+    numbers that are products of primes are masked with the sum of the prime's masks
+    e.g. 10 = 2 * 5 -> mask(10) = mask(2) + mask(5) = 1 + 4 = 5
+dp <- bottom up dp array. since masks are 10 bits long, we only need 1 << 10 columns
+dfs
+    everytime we encounter an index with a mask we have yet to see, assume we did not take the current element and compute the subset
+    if the mask != -1 and the mask of the current number and our tracking mask does not clash
+        we can add this element to this subset
+        traverse one more time, this time adding the previous result and a new traversal, with this element accounted for
