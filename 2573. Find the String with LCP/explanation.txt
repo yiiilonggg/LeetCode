@@ -1,0 +1,25 @@
+// credit to: @timetoai
+
+ufds data structure with a change
+    when union-ing, instead of union-ing onto the bigger set, we union to the lower set
+    this is because we want to preserve the lexicographic order of the result
+    other ufds operations are the same
+
+edge cases on first pass:
+    if at at the (i, i) digonal, lcp[i][i] + i != n, it is not valid
+        longest common prefix at the same index is essentially the suffix of the word
+        so length of suffix from i + i == 
+    on the same diagonal, we should have the same common prefix
+        so when we go down on diagonal in the right-down direction, our new lcp should be -1 our current lcp
+
+edge cases on second pass:
+    if we have a lcp[i][j] == 0, the char at i and j cannot be the same
+        if not we will have an lcp[i][j] of at least 1
+    if we have lcp[i][j] > 0, means that i + lcp[i][j] and j + lcp[i][j] cannot be the same character
+        if they are the same character, then lcp[i][j] would be 1 larger
+
+building solution
+    quite straightforward,
+    if we have seen a character before, use it
+    if we have not, we represent the current index with a new character
+    check if we have exceeded past 'z'
