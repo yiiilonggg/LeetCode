@@ -1,0 +1,9 @@
+original solution:
+    brute force and treat each node as a new root and recount
+    time: O(n^2)
+
+however, we only need to check the changes when we take children of the roots as new roots
+    reroot for each child of 0
+    dfs at each child of 0
+    when my dfs reaches a node, it is similar to being rerooted at that node
+    since count of correct guesses is maintained at each iteration
