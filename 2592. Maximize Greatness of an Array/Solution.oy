@@ -1,0 +1,14 @@
+import heapq
+
+class Solution:
+    def maximizeGreatness(self, nums: List[int]) -> int:
+        pq = []
+        nums = sorted(nums)
+        for n in nums: heapq.heappush(pq, n)
+        res = 0
+        for n in nums:
+            while pq and pq[0] <= n: heapq.heappop(pq)
+            if not pq: break
+            res += 1
+            heapq.heappop(pq)
+        return res
