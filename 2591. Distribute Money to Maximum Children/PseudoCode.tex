@@ -1,0 +1,48 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\newenvironment{simplechar}{%
+   \catcode`\$=12
+   \catcode`\&=12
+   \catcode`\#=12
+   \catcode`\^=12
+   \catcode`\_=12
+   \catcode`\~=12
+   \catcode`\%=12
+}{}
+
+
+\begin{document}
+
+\begin{simplechar}
+    \noindent
+    A0237044L\newline
+    Tan Yi Long
+\end{simplechar}
+
+\begin{algorithm}
+    \caption{Distribute Money}
+    \begin{algorithmic}
+        \If {$children > money$}
+        \State return $-1$
+        \EndIf
+        \State $high \leftarrow children \times 8$
+        \If {$high > money$}
+        \State return $children - 1$
+        \EndIf
+        \If {$high = money$}
+        \State return $children$
+        \EndIf
+        \If {$high - money = 4$}
+        \State return $children - 2$
+        \EndIf
+        \State $children \leftarrow children - (high - money) / 7$
+        \If {$(high - money) \pmod 7 = 0$}
+        \State return $children$
+        \Else
+        \State return $children - 1$
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+\end{document}
